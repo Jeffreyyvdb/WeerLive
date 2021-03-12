@@ -77,5 +77,11 @@ namespace WeerLive
             //    metroTabPageVerwachting.Controls.Add(comboBoxLocation1);
             //}
         }
+
+        private void comboBoxLocation1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string plaats = comboBoxLocation1.Text;
+            Weer weer = Weer.WeerPlaats(plaats);
+        }
     }
 }

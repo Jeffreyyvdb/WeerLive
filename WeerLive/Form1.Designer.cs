@@ -119,13 +119,14 @@ namespace WeerLive
             // 
             // comboBoxLocation1
             // 
-            this.comboBoxLocation1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxLocation1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxLocation1.FormattingEnabled = true;
-            this.comboBoxLocation1.ItemHeight = 24;
+            this.comboBoxLocation1.ItemHeight = 20;
             this.comboBoxLocation1.Location = new System.Drawing.Point(527, 16);
             this.comboBoxLocation1.Name = "comboBoxLocation1";
-            this.comboBoxLocation1.Size = new System.Drawing.Size(222, 32);
+            this.comboBoxLocation1.Size = new System.Drawing.Size(222, 28);
             this.comboBoxLocation1.TabIndex = 6;
+            this.comboBoxLocation1.SelectedIndexChanged += new System.EventHandler(this.comboBoxLocation1_SelectedIndexChanged);
             // 
             // pictureBox1
             // 
@@ -146,7 +147,7 @@ namespace WeerLive
             this.metroLabelWeerv.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.metroLabelWeerv.Location = new System.Drawing.Point(-4, 287);
             this.metroLabelWeerv.Name = "metroLabelWeerv";
-            this.metroLabelWeerv.Size = new System.Drawing.Size(478, 25);
+            this.metroLabelWeerv.Size = new System.Drawing.Size(449, 25);
             this.metroLabelWeerv.TabIndex = 3;
             this.metroLabelWeerv.Text = "Verwachting onstuimig met buien, vrijdag minder wind.";
             // 
@@ -155,7 +156,7 @@ namespace WeerLive
             this.metroLabelDauwp.AutoSize = true;
             this.metroLabelDauwp.Location = new System.Drawing.Point(-4, 248);
             this.metroLabelDauwp.Name = "metroLabelDauwp";
-            this.metroLabelDauwp.Size = new System.Drawing.Size(103, 20);
+            this.metroLabelDauwp.Size = new System.Drawing.Size(96, 19);
             this.metroLabelDauwp.TabIndex = 3;
             this.metroLabelDauwp.Text = "Dauwpunt 5 °C";
             // 
@@ -164,7 +165,7 @@ namespace WeerLive
             this.metroLabelLv.AutoSize = true;
             this.metroLabelLv.Location = new System.Drawing.Point(-4, 228);
             this.metroLabelLv.Name = "metroLabelLv";
-            this.metroLabelLv.Size = new System.Drawing.Size(203, 20);
+            this.metroLabelLv.Size = new System.Drawing.Size(188, 19);
             this.metroLabelLv.TabIndex = 3;
             this.metroLabelLv.Text = "Relatieve luchtvochtigheid 69%";
             // 
@@ -173,7 +174,7 @@ namespace WeerLive
             this.metroLabelZicht.AutoSize = true;
             this.metroLabelZicht.Location = new System.Drawing.Point(-4, 208);
             this.metroLabelZicht.Name = "metroLabelZicht";
-            this.metroLabelZicht.Size = new System.Drawing.Size(120, 20);
+            this.metroLabelZicht.Size = new System.Drawing.Size(113, 19);
             this.metroLabelZicht.TabIndex = 3;
             this.metroLabelZicht.Text = "Zicht 10 Kilometer";
             // 
@@ -182,7 +183,7 @@ namespace WeerLive
             this.metroLabelLuchtd.AutoSize = true;
             this.metroLabelLuchtd.Location = new System.Drawing.Point(-4, 188);
             this.metroLabelLuchtd.Name = "metroLabelLuchtd";
-            this.metroLabelLuchtd.Size = new System.Drawing.Size(139, 20);
+            this.metroLabelLuchtd.Size = new System.Drawing.Size(129, 19);
             this.metroLabelLuchtd.TabIndex = 2;
             this.metroLabelLuchtd.Text = "Luchtdruk 992.7  hPa";
             // 
@@ -191,7 +192,7 @@ namespace WeerLive
             this.metroLabelWindr.AutoSize = true;
             this.metroLabelWindr.Location = new System.Drawing.Point(-4, 168);
             this.metroLabelWindr.Name = "metroLabelWindr";
-            this.metroLabelWindr.Size = new System.Drawing.Size(113, 20);
+            this.metroLabelWindr.Size = new System.Drawing.Size(108, 19);
             this.metroLabelWindr.TabIndex = 2;
             this.metroLabelWindr.Text = "Windrichting ZW";
             // 
@@ -200,7 +201,7 @@ namespace WeerLive
             this.metroLabelWind.AutoSize = true;
             this.metroLabelWind.Location = new System.Drawing.Point(-4, 148);
             this.metroLabelWind.Name = "metroLabelWind";
-            this.metroLabelWind.Size = new System.Drawing.Size(275, 20);
+            this.metroLabelWind.Size = new System.Drawing.Size(263, 19);
             this.metroLabelWind.TabIndex = 2;
             this.metroLabelWind.Text = "Wind 7bft | 33 knopen | 17 m/s |   61,2 km/h";
             // 
@@ -209,7 +210,7 @@ namespace WeerLive
             this.metroLabelgTemp.AutoSize = true;
             this.metroLabelgTemp.Location = new System.Drawing.Point(-4, 65);
             this.metroLabelgTemp.Name = "metroLabelgTemp";
-            this.metroLabelgTemp.Size = new System.Drawing.Size(102, 20);
+            this.metroLabelgTemp.Size = new System.Drawing.Size(96, 19);
             this.metroLabelgTemp.TabIndex = 2;
             this.metroLabelgTemp.Text = "Voelt als 3,8 °C";
             // 
@@ -219,7 +220,7 @@ namespace WeerLive
             this.metroLabelSamenv.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelSamenv.Location = new System.Drawing.Point(-4, 85);
             this.metroLabelSamenv.Name = "metroLabelSamenv";
-            this.metroLabelSamenv.Size = new System.Drawing.Size(160, 25);
+            this.metroLabelSamenv.Size = new System.Drawing.Size(152, 25);
             this.metroLabelSamenv.TabIndex = 2;
             this.metroLabelSamenv.Text = "Droog na regenen";
             // 
@@ -229,7 +230,7 @@ namespace WeerLive
             this.metroLabelTemp.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelTemp.Location = new System.Drawing.Point(-4, 40);
             this.metroLabelTemp.Name = "metroLabelTemp";
-            this.metroLabelTemp.Size = new System.Drawing.Size(67, 25);
+            this.metroLabelTemp.Size = new System.Drawing.Size(63, 25);
             this.metroLabelTemp.TabIndex = 2;
             this.metroLabelTemp.Text = "10,9 °C";
             // 
@@ -240,7 +241,7 @@ namespace WeerLive
             this.metroLabelHetWeerVan.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.metroLabelHetWeerVan.Location = new System.Drawing.Point(-4, 15);
             this.metroLabelHetWeerVan.Name = "metroLabelHetWeerVan";
-            this.metroLabelHetWeerVan.Size = new System.Drawing.Size(218, 25);
+            this.metroLabelHetWeerVan.Size = new System.Drawing.Size(208, 25);
             this.metroLabelHetWeerVan.TabIndex = 2;
             this.metroLabelHetWeerVan.Text = "Het weer in Amsterdam :";
             // 
@@ -316,7 +317,7 @@ namespace WeerLive
             this.metroLabelOvermorgen.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelOvermorgen.Location = new System.Drawing.Point(355, 89);
             this.metroLabelOvermorgen.Name = "metroLabelOvermorgen";
-            this.metroLabelOvermorgen.Size = new System.Drawing.Size(115, 25);
+            this.metroLabelOvermorgen.Size = new System.Drawing.Size(109, 25);
             this.metroLabelOvermorgen.TabIndex = 8;
             this.metroLabelOvermorgen.Text = "Overmorgen";
             // 
@@ -326,7 +327,7 @@ namespace WeerLive
             this.metroLabelMorgen.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelMorgen.Location = new System.Drawing.Point(237, 89);
             this.metroLabelMorgen.Name = "metroLabelMorgen";
-            this.metroLabelMorgen.Size = new System.Drawing.Size(76, 25);
+            this.metroLabelMorgen.Size = new System.Drawing.Size(72, 25);
             this.metroLabelMorgen.TabIndex = 8;
             this.metroLabelMorgen.Text = "Morgen";
             // 
@@ -336,7 +337,7 @@ namespace WeerLive
             this.metroLabelVandaag.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelVandaag.Location = new System.Drawing.Point(121, 89);
             this.metroLabelVandaag.Name = "metroLabelVandaag";
-            this.metroLabelVandaag.Size = new System.Drawing.Size(80, 25);
+            this.metroLabelVandaag.Size = new System.Drawing.Size(78, 25);
             this.metroLabelVandaag.TabIndex = 8;
             this.metroLabelVandaag.Text = "Vandaag";
             // 
@@ -346,7 +347,7 @@ namespace WeerLive
             this.metroLabelD2max.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelD2max.Location = new System.Drawing.Point(355, 169);
             this.metroLabelD2max.Name = "metroLabelD2max";
-            this.metroLabelD2max.Size = new System.Drawing.Size(45, 25);
+            this.metroLabelD2max.Size = new System.Drawing.Size(44, 25);
             this.metroLabelD2max.TabIndex = 8;
             this.metroLabelD2max.Text = "Max";
             // 
@@ -356,7 +357,7 @@ namespace WeerLive
             this.metroLabelD1max.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelD1max.Location = new System.Drawing.Point(237, 169);
             this.metroLabelD1max.Name = "metroLabelD1max";
-            this.metroLabelD1max.Size = new System.Drawing.Size(45, 25);
+            this.metroLabelD1max.Size = new System.Drawing.Size(44, 25);
             this.metroLabelD1max.TabIndex = 8;
             this.metroLabelD1max.Text = "Max";
             // 
@@ -366,7 +367,7 @@ namespace WeerLive
             this.metroLabelD0max.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelD0max.Location = new System.Drawing.Point(121, 169);
             this.metroLabelD0max.Name = "metroLabelD0max";
-            this.metroLabelD0max.Size = new System.Drawing.Size(45, 25);
+            this.metroLabelD0max.Size = new System.Drawing.Size(44, 25);
             this.metroLabelD0max.TabIndex = 8;
             this.metroLabelD0max.Text = "Max";
             // 
@@ -376,7 +377,7 @@ namespace WeerLive
             this.metroLabelMax.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelMax.Location = new System.Drawing.Point(-4, 169);
             this.metroLabelMax.Name = "metroLabelMax";
-            this.metroLabelMax.Size = new System.Drawing.Size(45, 25);
+            this.metroLabelMax.Size = new System.Drawing.Size(44, 25);
             this.metroLabelMax.TabIndex = 8;
             this.metroLabelMax.Text = "Max";
             // 
@@ -386,7 +387,7 @@ namespace WeerLive
             this.metroLabelD2gem.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelD2gem.Location = new System.Drawing.Point(355, 207);
             this.metroLabelD2gem.Name = "metroLabelD2gem";
-            this.metroLabelD2gem.Size = new System.Drawing.Size(51, 25);
+            this.metroLabelD2gem.Size = new System.Drawing.Size(48, 25);
             this.metroLabelD2gem.TabIndex = 8;
             this.metroLabelD2gem.Text = "Gem";
             // 
@@ -396,7 +397,7 @@ namespace WeerLive
             this.metroLabelD1gem.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelD1gem.Location = new System.Drawing.Point(237, 207);
             this.metroLabelD1gem.Name = "metroLabelD1gem";
-            this.metroLabelD1gem.Size = new System.Drawing.Size(51, 25);
+            this.metroLabelD1gem.Size = new System.Drawing.Size(48, 25);
             this.metroLabelD1gem.TabIndex = 8;
             this.metroLabelD1gem.Text = "Gem";
             // 
@@ -406,7 +407,7 @@ namespace WeerLive
             this.metroLabelD0gem.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelD0gem.Location = new System.Drawing.Point(121, 207);
             this.metroLabelD0gem.Name = "metroLabelD0gem";
-            this.metroLabelD0gem.Size = new System.Drawing.Size(51, 25);
+            this.metroLabelD0gem.Size = new System.Drawing.Size(48, 25);
             this.metroLabelD0gem.TabIndex = 8;
             this.metroLabelD0gem.Text = "Gem";
             // 
@@ -416,7 +417,7 @@ namespace WeerLive
             this.metroLabelGem.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelGem.Location = new System.Drawing.Point(-4, 207);
             this.metroLabelGem.Name = "metroLabelGem";
-            this.metroLabelGem.Size = new System.Drawing.Size(51, 25);
+            this.metroLabelGem.Size = new System.Drawing.Size(48, 25);
             this.metroLabelGem.TabIndex = 8;
             this.metroLabelGem.Text = "Gem";
             // 
@@ -426,7 +427,7 @@ namespace WeerLive
             this.metroLabelD2min.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelD2min.Location = new System.Drawing.Point(355, 242);
             this.metroLabelD2min.Name = "metroLabelD2min";
-            this.metroLabelD2min.Size = new System.Drawing.Size(42, 25);
+            this.metroLabelD2min.Size = new System.Drawing.Size(41, 25);
             this.metroLabelD2min.TabIndex = 8;
             this.metroLabelD2min.Text = "Min";
             // 
@@ -436,7 +437,7 @@ namespace WeerLive
             this.metroLabelD1min.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelD1min.Location = new System.Drawing.Point(237, 242);
             this.metroLabelD1min.Name = "metroLabelD1min";
-            this.metroLabelD1min.Size = new System.Drawing.Size(42, 25);
+            this.metroLabelD1min.Size = new System.Drawing.Size(41, 25);
             this.metroLabelD1min.TabIndex = 8;
             this.metroLabelD1min.Text = "Min";
             // 
@@ -446,7 +447,7 @@ namespace WeerLive
             this.metroLabelD0min.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelD0min.Location = new System.Drawing.Point(121, 242);
             this.metroLabelD0min.Name = "metroLabelD0min";
-            this.metroLabelD0min.Size = new System.Drawing.Size(42, 25);
+            this.metroLabelD0min.Size = new System.Drawing.Size(41, 25);
             this.metroLabelD0min.TabIndex = 8;
             this.metroLabelD0min.Text = "Min";
             // 
@@ -456,7 +457,7 @@ namespace WeerLive
             this.metroLabelMin.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelMin.Location = new System.Drawing.Point(-4, 242);
             this.metroLabelMin.Name = "metroLabelMin";
-            this.metroLabelMin.Size = new System.Drawing.Size(42, 25);
+            this.metroLabelMin.Size = new System.Drawing.Size(41, 25);
             this.metroLabelMin.TabIndex = 8;
             this.metroLabelMin.Text = "Min";
             // 
@@ -467,7 +468,7 @@ namespace WeerLive
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.metroLabel1.Location = new System.Drawing.Point(-4, 15);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(218, 25);
+            this.metroLabel1.Size = new System.Drawing.Size(208, 25);
             this.metroLabel1.TabIndex = 6;
             this.metroLabel1.Text = "Het weer in Amsterdam :";
             // 
