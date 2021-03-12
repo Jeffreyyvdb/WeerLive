@@ -66,15 +66,15 @@ namespace WeerLive
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("https://weerlive.nl/api/json-data-10min.php?key=" + API_KEY + "&locatie=" + plaats);
             HttpResponseMessage response = client.GetAsync("").Result;
+            var result = response.Content.ReadAsStringAsync().Result;
+            Weer rWeer = JsonConvert.DeserializeObject<Root>(result).liveweer[0];
             
-
-            var rWeer = JsonConvert.DeserializeObject<Weer>(response.Content.ReadAsStringAsync().Result);
 
             return rWeer;
         }
     }
     public class Root
     {
-        public List<Weer> weer { get; set; }
+        public List<Weer> liveweer { get; set; }
     }
 }
