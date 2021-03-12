@@ -32,7 +32,7 @@ namespace WeerLive
             this.components = new System.ComponentModel.Container();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPageAlgemeen = new MetroFramework.Controls.MetroTabPage();
-            this.metroComboBoxLocation = new MetroFramework.Controls.MetroComboBox();
+            this.comboBoxLocation1 = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.metroLabelWeerv = new MetroFramework.Controls.MetroLabel();
             this.metroLabelDauwp = new MetroFramework.Controls.MetroLabel();
@@ -64,7 +64,6 @@ namespace WeerLive
             this.metroLabelD1min = new MetroFramework.Controls.MetroLabel();
             this.metroLabelD0min = new MetroFramework.Controls.MetroLabel();
             this.metroLabelMin = new MetroFramework.Controls.MetroLabel();
-            this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroStyleManager1 = new MetroFramework.Components.MetroStyleManager(this.components);
             this.metroTabControl1.SuspendLayout();
@@ -85,14 +84,15 @@ namespace WeerLive
             this.metroTabControl1.FontSize = MetroFramework.MetroTabControlSize.Tall;
             this.metroTabControl1.Location = new System.Drawing.Point(20, 60);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(760, 370);
             this.metroTabControl1.TabIndex = 0;
             this.metroTabControl1.UseSelectable = true;
+            this.metroTabControl1.SelectedIndexChanged += new System.EventHandler(this.metroTabControl1_SelectedIndexChanged);
             // 
             // metroTabPageAlgemeen
             // 
-            this.metroTabPageAlgemeen.Controls.Add(this.metroComboBoxLocation);
+            this.metroTabPageAlgemeen.Controls.Add(this.comboBoxLocation1);
             this.metroTabPageAlgemeen.Controls.Add(this.pictureBox1);
             this.metroTabPageAlgemeen.Controls.Add(this.metroLabelWeerv);
             this.metroTabPageAlgemeen.Controls.Add(this.metroLabelDauwp);
@@ -117,17 +117,15 @@ namespace WeerLive
             this.metroTabPageAlgemeen.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPageAlgemeen.VerticalScrollbarSize = 10;
             // 
-            // metroComboBoxLocation
+            // comboBoxLocation1
             // 
-            this.metroComboBoxLocation.FormattingEnabled = true;
-            this.metroComboBoxLocation.ItemHeight = 24;
-            this.metroComboBoxLocation.Items.AddRange(new object[] {
-            "Amsterdam"});
-            this.metroComboBoxLocation.Location = new System.Drawing.Point(628, 15);
-            this.metroComboBoxLocation.Name = "metroComboBoxLocation";
-            this.metroComboBoxLocation.Size = new System.Drawing.Size(121, 30);
-            this.metroComboBoxLocation.TabIndex = 5;
-            this.metroComboBoxLocation.UseSelectable = true;
+            this.comboBoxLocation1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxLocation1.FormattingEnabled = true;
+            this.comboBoxLocation1.ItemHeight = 24;
+            this.comboBoxLocation1.Location = new System.Drawing.Point(527, 16);
+            this.comboBoxLocation1.Name = "comboBoxLocation1";
+            this.comboBoxLocation1.Size = new System.Drawing.Size(222, 32);
+            this.comboBoxLocation1.TabIndex = 6;
             // 
             // pictureBox1
             // 
@@ -266,7 +264,6 @@ namespace WeerLive
             this.metroTabPageVerwachting.Controls.Add(this.metroLabelD1min);
             this.metroTabPageVerwachting.Controls.Add(this.metroLabelD0min);
             this.metroTabPageVerwachting.Controls.Add(this.metroLabelMin);
-            this.metroTabPageVerwachting.Controls.Add(this.metroComboBox1);
             this.metroTabPageVerwachting.Controls.Add(this.metroLabel1);
             this.metroTabPageVerwachting.HorizontalScrollbarBarColor = true;
             this.metroTabPageVerwachting.HorizontalScrollbarHighlightOnWheel = false;
@@ -463,18 +460,6 @@ namespace WeerLive
             this.metroLabelMin.TabIndex = 8;
             this.metroLabelMin.Text = "Min";
             // 
-            // metroComboBox1
-            // 
-            this.metroComboBox1.FormattingEnabled = true;
-            this.metroComboBox1.ItemHeight = 24;
-            this.metroComboBox1.Items.AddRange(new object[] {
-            "Amsterdam"});
-            this.metroComboBox1.Location = new System.Drawing.Point(628, 15);
-            this.metroComboBox1.Name = "metroComboBox1";
-            this.metroComboBox1.Size = new System.Drawing.Size(121, 30);
-            this.metroComboBox1.TabIndex = 7;
-            this.metroComboBox1.UseSelectable = true;
-            // 
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
@@ -496,6 +481,7 @@ namespace WeerLive
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.metroTabControl1);
+            this.MinimumSize = new System.Drawing.Size(800, 450);
             this.Name = "Form1";
             this.Text = "WeerLive";
             this.metroTabControl1.ResumeLayout(false);
@@ -529,14 +515,12 @@ namespace WeerLive
         private MetroFramework.Controls.MetroLabel metroLabelWeerv;
         private MetroFramework.Controls.MetroLabel metroLabelDauwp;
         private MetroFramework.Controls.MetroLabel metroLabelLv;
-        private MetroFramework.Controls.MetroComboBox metroComboBoxLocation;
         private MetroFramework.Controls.MetroLabel metroLabelOvermorgen;
         private MetroFramework.Controls.MetroLabel metroLabelMorgen;
         private MetroFramework.Controls.MetroLabel metroLabelVandaag;
         private MetroFramework.Controls.MetroLabel metroLabelMax;
         private MetroFramework.Controls.MetroLabel metroLabelGem;
         private MetroFramework.Controls.MetroLabel metroLabelMin;
-        private MetroFramework.Controls.MetroComboBox metroComboBox1;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private System.Windows.Forms.PictureBox pictureBoxD2weer;
         private System.Windows.Forms.PictureBox pictureBoxD1weer;
@@ -551,6 +535,7 @@ namespace WeerLive
         private MetroFramework.Controls.MetroLabel metroLabelD1min;
         private MetroFramework.Controls.MetroLabel metroLabelD0min;
         private MetroFramework.Components.MetroStyleManager metroStyleManager1;
+        private System.Windows.Forms.ComboBox comboBoxLocation1;
     }
 }
 
