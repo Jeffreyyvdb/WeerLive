@@ -61,16 +61,21 @@ namespace WeerLive
         // Wanneer een andere tabpage geselecteerd word de combobox toevoegen aan deze page
         private void metroTabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (metroTabControl1.SelectedTab.Name == "metroTabPageAlgemeen")
-            {
-                Console.WriteLine("Algemeen geselecteerd");
-                metroTabPageAlgemeen.Controls.Add(comboBoxLocation1);
-            }
-            else if (metroTabControl1.SelectedTab.Name == "metroTabPageVerwachting")
-            {
-                Console.WriteLine("Verwachting geselecteerd");
-                metroTabPageVerwachting.Controls.Add(comboBoxLocation1);
-            }
+            // add de combobox naar de huidige geselecteerde combobox..
+            MetroTabControl tab = ((MetroTabControl)sender);
+            int i = tab.SelectedIndex;
+            metroTabControl1.TabPages[i].Controls.Add(comboBoxLocation1);
+
+            //if (metroTabControl1.SelectedTab.Name == "metroTabPageAlgemeen")
+            //{
+            //    Console.WriteLine("Algemeen geselecteerd");
+            //    metroTabPageAlgemeen.Controls.Add(comboBoxLocation1);
+            //}
+            //else if (metroTabControl1.SelectedTab.Name == "metroTabPageVerwachting")
+            //{
+            //    Console.WriteLine("Verwachting geselecteerd");
+            //    metroTabPageVerwachting.Controls.Add(comboBoxLocation1);
+            //}
         }
     }
 }
