@@ -80,9 +80,16 @@ namespace WeerLive
 
         private void comboBoxLocation1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //laad de plaats uit de combobox als de index veranderd
+            //En geeft deze plaats mee naar de WeerPlaats functie
+            //Die de api data als een weer object terug geeft.
             string plaats = comboBoxLocation1.Text;
-            Weer weer = Weer.WeerPlaats(plaats);
-            fillLabels(weer);
+            // check of de plaats wel een waarde is
+            if (plaats != "")
+            {
+                Weer weer = Weer.WeerPlaats(plaats);
+                fillLabels(weer);
+            }
 
         }
 

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http;
 using Newtonsoft.Json;
+using System.IO;
 
 namespace WeerLive
 {
@@ -61,15 +62,42 @@ namespace WeerLive
         public string alarm { get; set; }
 
         const string API_KEY = "aadaeb7685";
+        const string path_Weer = @"../../../geladenWeer.json";
+        static List<Weer> weerList = new List<Weer>();
+        static int i = 0;
         public static Weer WeerPlaats(string plaats)
         {
+            //Make a httpClient for getting api data
             HttpClient client = new HttpClient();
+            //Url for api + key + plaats
             client.BaseAddress = new Uri("https://weerlive.nl/api/json-data-10min.php?key=" + API_KEY + "&locatie=" + plaats);
+            //Async response 
             HttpResponseMessage response = client.GetAsync("").Result;
+            //Response naar variabele Liveweer
             var result = response.Content.ReadAsStringAsync().Result;
+            //Weer object van api data liveweer 0 anders hebben wij een array met data erin.
             Weer rWeer = JsonConvert.DeserializeObject<Root>(result).liveweer[0];
-            
+            //Kijk of het weer nog niet voorkomt in de lijst.
+            if (!weerList.Contains(rWeer) && i != 0)
+                weerList.Add(rWeer);
+            else if (!weerList.Contains(rWeer) && i == 0)
+                weerList.Add(rWeer);
 
+            //Maak een weer array met de lengthe van de weerlijst
+            Weer[] weerArray = new Weer[weerList.Count];
+            int j = 0;
+            //add weerlijst objecten in de weer array
+            foreach (Weer weer in weerList)
+            {
+                weerArray[j] = weer;
+                j++;
+            }
+            i++;
+            //serialize de weer array
+            string x = JsonConvert.SerializeObject(weerArray, Formatting.Indented);
+            //Schrijf naar file
+            File.WriteAllText(path_Weer, x);
+            //Return weer naar Programma zodat we de data kunnen laten zien.
             return rWeer;
         }
     }
