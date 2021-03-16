@@ -11,6 +11,8 @@ namespace WeerLive
 {
     public class Weer
     {
+        public string plaatsNaam { get; set; }
+
         public string plaats { get; set; }
         public string temp { get; set; }
         public string gtemp { get; set; }
@@ -61,10 +63,14 @@ namespace WeerLive
         public string d2zon { get; set; }
         public string alarm { get; set; }
 
+        public DateTime datum { get; set; }
+
+
         const string API_KEY = "aadaeb7685";
         const string path_Weer = @"../../../geladenWeer.json";
         static List<Weer> weerList = new List<Weer>();
         static int i = 0;
+
         public static Weer WeerPlaats(string plaats)
         {
             //Make a httpClient for getting api data
@@ -77,6 +83,10 @@ namespace WeerLive
             var result = response.Content.ReadAsStringAsync().Result;
             //Weer object van api data liveweer 0 anders hebben wij een array met data erin.
             Weer rWeer = JsonConvert.DeserializeObject<Root>(result).liveweer[0];
+
+            rWeer.plaatsNaam = plaats;
+            rWeer.datum = DateTime.Now;
+
             //Kijk of het weer nog niet voorkomt in de lijst.
             if (!weerList.Contains(rWeer) && i != 0)
                 weerList.Add(rWeer);
@@ -100,7 +110,10 @@ namespace WeerLive
             //Return weer naar Programma zodat we de data kunnen laten zien.
             return rWeer;
         }
+
     }
+
+    
     public class Root
     {
         public List<Weer> liveweer { get; set; }

@@ -33,7 +33,6 @@ namespace WeerLive
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPageAlgemeen = new MetroFramework.Controls.MetroTabPage();
             this.comboBoxLocation1 = new System.Windows.Forms.ComboBox();
-            this.pictureBoxAlgemeen = new System.Windows.Forms.PictureBox();
             this.metroLabelWeerv = new MetroFramework.Controls.MetroLabel();
             this.metroLabelDauwp = new MetroFramework.Controls.MetroLabel();
             this.metroLabelLv = new MetroFramework.Controls.MetroLabel();
@@ -46,9 +45,6 @@ namespace WeerLive
             this.metroLabelTemp = new MetroFramework.Controls.MetroLabel();
             this.metroLabelHetWeerVan = new MetroFramework.Controls.MetroLabel();
             this.metroTabPageVerwachting = new MetroFramework.Controls.MetroTabPage();
-            this.pictureBoxD2weer = new System.Windows.Forms.PictureBox();
-            this.pictureBoxD1weer = new System.Windows.Forms.PictureBox();
-            this.pictureBoxD0weer = new System.Windows.Forms.PictureBox();
             this.metroLabelOvermorgen = new MetroFramework.Controls.MetroLabel();
             this.metroLabelMorgen = new MetroFramework.Controls.MetroLabel();
             this.metroLabelVandaag = new MetroFramework.Controls.MetroLabel();
@@ -66,14 +62,22 @@ namespace WeerLive
             this.metroLabelMin = new MetroFramework.Controls.MetroLabel();
             this.metroLabelHetWeerIn2 = new MetroFramework.Controls.MetroLabel();
             this.metroStyleManager1 = new MetroFramework.Components.MetroStyleManager(this.components);
+            this.comboBoxSaved = new System.Windows.Forms.ComboBox();
+            this.metroLabelOpgeslagen = new MetroFramework.Controls.MetroLabel();
+            this.metroLabelDatum = new MetroFramework.Controls.MetroLabel();
+            this.metroButtonExport = new MetroFramework.Controls.MetroButton();
+            this.pictureBoxAlgemeen = new System.Windows.Forms.PictureBox();
+            this.pictureBoxD2weer = new System.Windows.Forms.PictureBox();
+            this.pictureBoxD1weer = new System.Windows.Forms.PictureBox();
+            this.pictureBoxD0weer = new System.Windows.Forms.PictureBox();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPageAlgemeen.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAlgemeen)).BeginInit();
             this.metroTabPageVerwachting.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAlgemeen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD2weer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD1weer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD0weer)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // metroTabControl1
@@ -84,7 +88,7 @@ namespace WeerLive
             this.metroTabControl1.FontSize = MetroFramework.MetroTabControlSize.Tall;
             this.metroTabControl1.Location = new System.Drawing.Point(20, 60);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(760, 370);
             this.metroTabControl1.TabIndex = 0;
             this.metroTabControl1.UseSelectable = true;
@@ -92,6 +96,9 @@ namespace WeerLive
             // 
             // metroTabPageAlgemeen
             // 
+            this.metroTabPageAlgemeen.Controls.Add(this.metroButtonExport);
+            this.metroTabPageAlgemeen.Controls.Add(this.metroLabelOpgeslagen);
+            this.metroTabPageAlgemeen.Controls.Add(this.comboBoxSaved);
             this.metroTabPageAlgemeen.Controls.Add(this.comboBoxLocation1);
             this.metroTabPageAlgemeen.Controls.Add(this.pictureBoxAlgemeen);
             this.metroTabPageAlgemeen.Controls.Add(this.metroLabelWeerv);
@@ -127,18 +134,7 @@ namespace WeerLive
             this.comboBoxLocation1.Size = new System.Drawing.Size(222, 33);
             this.comboBoxLocation1.TabIndex = 6;
             this.comboBoxLocation1.SelectedIndexChanged += new System.EventHandler(this.comboBoxLocation1_SelectedIndexChanged);
-            // 
-            // pictureBoxAlgemeen
-            // 
-            this.pictureBoxAlgemeen.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxAlgemeen.Image = global::WeerLive.Properties.Resources.bewolkt;
-            this.pictureBoxAlgemeen.InitialImage = global::WeerLive.Properties.Resources.zonnig;
-            this.pictureBoxAlgemeen.Location = new System.Drawing.Point(213, 60);
-            this.pictureBoxAlgemeen.Name = "pictureBoxAlgemeen";
-            this.pictureBoxAlgemeen.Size = new System.Drawing.Size(30, 25);
-            this.pictureBoxAlgemeen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxAlgemeen.TabIndex = 4;
-            this.pictureBoxAlgemeen.TabStop = false;
+            this.comboBoxLocation1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comboBoxLocation1_KeyDown);
             // 
             // metroLabelWeerv
             // 
@@ -247,9 +243,6 @@ namespace WeerLive
             // 
             // metroTabPageVerwachting
             // 
-            this.metroTabPageVerwachting.Controls.Add(this.pictureBoxD2weer);
-            this.metroTabPageVerwachting.Controls.Add(this.pictureBoxD1weer);
-            this.metroTabPageVerwachting.Controls.Add(this.pictureBoxD0weer);
             this.metroTabPageVerwachting.Controls.Add(this.metroLabelOvermorgen);
             this.metroTabPageVerwachting.Controls.Add(this.metroLabelMorgen);
             this.metroTabPageVerwachting.Controls.Add(this.metroLabelVandaag);
@@ -266,6 +259,9 @@ namespace WeerLive
             this.metroTabPageVerwachting.Controls.Add(this.metroLabelD0min);
             this.metroTabPageVerwachting.Controls.Add(this.metroLabelMin);
             this.metroTabPageVerwachting.Controls.Add(this.metroLabelHetWeerIn2);
+            this.metroTabPageVerwachting.Controls.Add(this.pictureBoxD2weer);
+            this.metroTabPageVerwachting.Controls.Add(this.pictureBoxD1weer);
+            this.metroTabPageVerwachting.Controls.Add(this.pictureBoxD0weer);
             this.metroTabPageVerwachting.HorizontalScrollbarBarColor = true;
             this.metroTabPageVerwachting.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPageVerwachting.HorizontalScrollbarSize = 10;
@@ -277,39 +273,6 @@ namespace WeerLive
             this.metroTabPageVerwachting.VerticalScrollbarBarColor = true;
             this.metroTabPageVerwachting.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPageVerwachting.VerticalScrollbarSize = 10;
-            // 
-            // pictureBoxD2weer
-            // 
-            this.pictureBoxD2weer.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxD2weer.Image = global::WeerLive.Properties.Resources.halfbewolkt;
-            this.pictureBoxD2weer.Location = new System.Drawing.Point(374, 127);
-            this.pictureBoxD2weer.Name = "pictureBoxD2weer";
-            this.pictureBoxD2weer.Size = new System.Drawing.Size(32, 32);
-            this.pictureBoxD2weer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBoxD2weer.TabIndex = 9;
-            this.pictureBoxD2weer.TabStop = false;
-            // 
-            // pictureBoxD1weer
-            // 
-            this.pictureBoxD1weer.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxD1weer.Image = global::WeerLive.Properties.Resources.halfbewolkt;
-            this.pictureBoxD1weer.Location = new System.Drawing.Point(256, 127);
-            this.pictureBoxD1weer.Name = "pictureBoxD1weer";
-            this.pictureBoxD1weer.Size = new System.Drawing.Size(32, 32);
-            this.pictureBoxD1weer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBoxD1weer.TabIndex = 9;
-            this.pictureBoxD1weer.TabStop = false;
-            // 
-            // pictureBoxD0weer
-            // 
-            this.pictureBoxD0weer.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxD0weer.Image = global::WeerLive.Properties.Resources.halfbewolkt;
-            this.pictureBoxD0weer.Location = new System.Drawing.Point(133, 127);
-            this.pictureBoxD0weer.Name = "pictureBoxD0weer";
-            this.pictureBoxD0weer.Size = new System.Drawing.Size(32, 32);
-            this.pictureBoxD0weer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBoxD0weer.TabIndex = 9;
-            this.pictureBoxD0weer.TabStop = false;
             // 
             // metroLabelOvermorgen
             // 
@@ -476,11 +439,101 @@ namespace WeerLive
             // 
             this.metroStyleManager1.Owner = this;
             // 
+            // comboBoxSaved
+            // 
+            this.comboBoxSaved.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxSaved.FormattingEnabled = true;
+            this.comboBoxSaved.ItemHeight = 25;
+            this.comboBoxSaved.Location = new System.Drawing.Point(527, 55);
+            this.comboBoxSaved.Name = "comboBoxSaved";
+            this.comboBoxSaved.Size = new System.Drawing.Size(222, 33);
+            this.comboBoxSaved.TabIndex = 7;
+            this.comboBoxSaved.SelectedIndexChanged += new System.EventHandler(this.comboBoxSaved_SelectedIndexChanged);
+            // 
+            // metroLabelOpgeslagen
+            // 
+            this.metroLabelOpgeslagen.AutoSize = true;
+            this.metroLabelOpgeslagen.Location = new System.Drawing.Point(430, 65);
+            this.metroLabelOpgeslagen.Name = "metroLabelOpgeslagen";
+            this.metroLabelOpgeslagen.Size = new System.Drawing.Size(91, 20);
+            this.metroLabelOpgeslagen.TabIndex = 8;
+            this.metroLabelOpgeslagen.Text = "Opgeslagen :";
+            // 
+            // metroLabelDatum
+            // 
+            this.metroLabelDatum.AutoSize = true;
+            this.metroLabelDatum.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabelDatum.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabelDatum.Location = new System.Drawing.Point(551, 39);
+            this.metroLabelDatum.Name = "metroLabelDatum";
+            this.metroLabelDatum.Size = new System.Drawing.Size(72, 25);
+            this.metroLabelDatum.TabIndex = 9;
+            this.metroLabelDatum.Text = "Datum";
+            // 
+            // metroButtonExport
+            // 
+            this.metroButtonExport.BackColor = System.Drawing.Color.Transparent;
+            this.metroButtonExport.BackgroundImage = global::WeerLive.Properties.Resources.export;
+            this.metroButtonExport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.metroButtonExport.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.metroButtonExport.Location = new System.Drawing.Point(710, 94);
+            this.metroButtonExport.Name = "metroButtonExport";
+            this.metroButtonExport.Size = new System.Drawing.Size(39, 32);
+            this.metroButtonExport.TabIndex = 11;
+            this.metroButtonExport.UseSelectable = true;
+            this.metroButtonExport.Click += new System.EventHandler(this.metroButtonExport_Click);
+            // 
+            // pictureBoxAlgemeen
+            // 
+            this.pictureBoxAlgemeen.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxAlgemeen.Image = global::WeerLive.Properties.Resources.bewolkt;
+            this.pictureBoxAlgemeen.InitialImage = global::WeerLive.Properties.Resources.zonnig;
+            this.pictureBoxAlgemeen.Location = new System.Drawing.Point(219, 53);
+            this.pictureBoxAlgemeen.Name = "pictureBoxAlgemeen";
+            this.pictureBoxAlgemeen.Size = new System.Drawing.Size(50, 50);
+            this.pictureBoxAlgemeen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxAlgemeen.TabIndex = 4;
+            this.pictureBoxAlgemeen.TabStop = false;
+            // 
+            // pictureBoxD2weer
+            // 
+            this.pictureBoxD2weer.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxD2weer.Image = global::WeerLive.Properties.Resources.halfbewolkt;
+            this.pictureBoxD2weer.Location = new System.Drawing.Point(374, 127);
+            this.pictureBoxD2weer.Name = "pictureBoxD2weer";
+            this.pictureBoxD2weer.Size = new System.Drawing.Size(32, 32);
+            this.pictureBoxD2weer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBoxD2weer.TabIndex = 9;
+            this.pictureBoxD2weer.TabStop = false;
+            // 
+            // pictureBoxD1weer
+            // 
+            this.pictureBoxD1weer.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxD1weer.Image = global::WeerLive.Properties.Resources.halfbewolkt;
+            this.pictureBoxD1weer.Location = new System.Drawing.Point(256, 127);
+            this.pictureBoxD1weer.Name = "pictureBoxD1weer";
+            this.pictureBoxD1weer.Size = new System.Drawing.Size(32, 32);
+            this.pictureBoxD1weer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBoxD1weer.TabIndex = 9;
+            this.pictureBoxD1weer.TabStop = false;
+            // 
+            // pictureBoxD0weer
+            // 
+            this.pictureBoxD0weer.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxD0weer.Image = global::WeerLive.Properties.Resources.halfbewolkt;
+            this.pictureBoxD0weer.Location = new System.Drawing.Point(133, 127);
+            this.pictureBoxD0weer.Name = "pictureBoxD0weer";
+            this.pictureBoxD0weer.Size = new System.Drawing.Size(32, 32);
+            this.pictureBoxD0weer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBoxD0weer.TabIndex = 9;
+            this.pictureBoxD0weer.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.metroLabelDatum);
             this.Controls.Add(this.metroTabControl1);
             this.MinimumSize = new System.Drawing.Size(800, 450);
             this.Name = "Form1";
@@ -488,14 +541,15 @@ namespace WeerLive
             this.metroTabControl1.ResumeLayout(false);
             this.metroTabPageAlgemeen.ResumeLayout(false);
             this.metroTabPageAlgemeen.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAlgemeen)).EndInit();
             this.metroTabPageVerwachting.ResumeLayout(false);
             this.metroTabPageVerwachting.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAlgemeen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD2weer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD1weer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD0weer)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -537,6 +591,10 @@ namespace WeerLive
         private MetroFramework.Controls.MetroLabel metroLabelD0min;
         private MetroFramework.Components.MetroStyleManager metroStyleManager1;
         private System.Windows.Forms.ComboBox comboBoxLocation1;
+        private MetroFramework.Controls.MetroLabel metroLabelOpgeslagen;
+        private System.Windows.Forms.ComboBox comboBoxSaved;
+        private MetroFramework.Controls.MetroLabel metroLabelDatum;
+        private MetroFramework.Controls.MetroButton metroButtonExport;
     }
 }
 

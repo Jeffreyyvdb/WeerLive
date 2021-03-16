@@ -11,17 +11,31 @@ using System.IO;
 using MetroFramework.Controls;
 using System.Resources;
 using WeerLive.Properties;
+using Newtonsoft.Json;
 
 namespace WeerLive
 {
     public partial class Form1 : MetroFramework.Forms.MetroForm
     {
         string PATH_PLAATSNAMEN = @"../../../plaatsnamen.txt";
+        const string PATH_SAVED = @"../../../test.json";
+        Weer weer;
+        List<Weer> weerLijst;
 
         public Form1()
         {
             InitializeComponent();
             FillComboBoxLocation();
+            getSavedList();
+            fillComboboxSaved(weerLijst);
+
+            // Huidge datum
+            DateTime datum = DateTime.Now.Date;
+            //metroLabelDatum.Text = datum.ToString("dd MMMM yyyy");
+            // Eerte tabpage geopenend
+            metroTabControl1.SelectedIndex = 0;
+            // Bij opstarten Amsterdam openenen
+            comboBoxLocation1.SelectedItem = "Amsterdam";
         }
 
         private void FillComboBoxLocation()
@@ -87,7 +101,7 @@ namespace WeerLive
             // check of de plaats wel een waarde is
             if (plaats != "")
             {
-                Weer weer = Weer.WeerPlaats(plaats);
+                weer = Weer.WeerPlaats(plaats);
                 fillLabels(weer);
             }
 
@@ -99,9 +113,9 @@ namespace WeerLive
             string pathToImage = getCorrectImage(p.d0weer);
             
             pictureBoxAlgemeen.Image = Image.FromFile(pathToImage);
-            metroLabelHetWeerVan.Text = $"Het weer van {p.plaats}";
-            metroLabelTemp.Text = p.temp;
-            metroLabelgTemp.Text = $"Voelt als : {p.gtemp}";
+            metroLabelHetWeerVan.Text = $"Het weer van {comboBoxLocation1.Text}";
+            metroLabelTemp.Text = p.temp + " °C";
+            metroLabelgTemp.Text = $"Voelt als : {p.gtemp} °C";
             metroLabelSamenv.Text = p.samenv;
             metroLabelWind.Text = $"Wind : {p.winds} bft | {p.windk} knoppen | {p.windms} m/s | {p.windkmh} km/h";
             metroLabelLuchtd.Text = $"Luchtdruk : {p.luchtd} hPa";
@@ -132,10 +146,13 @@ namespace WeerLive
 
         }
 
+        // Gemiddelde temperatuur berekenen
         public int gemiddeldeTemp(string max, string min)
         {
             return (Convert.ToInt32(max) + Convert.ToInt32(min)) / 2;
         }
+
+        // Juiste foto krijgen voor het weer
         public string getCorrectImage(string imgName)
         {
             string pathToImage = "zonnig";
@@ -185,6 +202,59 @@ namespace WeerLive
                     break;
             }
             return pathToImage;
+        }
+
+        // Comboxbox dropdown closen als er getyped word
+        private void comboBoxLocation1_KeyDown(object sender, KeyEventArgs e)
+        {
+            comboBoxLocation1.DroppedDown = false;
+        }
+
+        public void getSavedList()
+        {
+             weerLijst = new List<Weer>();
+
+            string json = File.ReadAllText(PATH_SAVED);
+            if (json.StartsWith("[") && json.EndsWith("]"))
+            {
+                weerLijst = JsonConvert.DeserializeObject<List<Weer>>(json);
+            }
+        }
+        private void metroButtonExport_Click(object sender, EventArgs e)
+        {
+            getSavedList();
+
+            //Save huidige data naar json
+            weerLijst.Add(weer);
+            string x = JsonConvert.SerializeObject(weerLijst, Formatting.Indented);
+            File.WriteAllText(PATH_SAVED, x);
+            fillComboboxSaved(weerLijst);
+        }
+        void fillComboboxSaved(List<Weer> l)
+        {
+            comboBoxSaved.Items.Clear();
+            foreach (Weer saved in l)
+            {
+                comboBoxSaved.Items.Add(saved.plaatsNaam + " " + saved.datum.ToString("dd-MM-yy"));
+            
+            }
+        }
+
+        private void comboBoxSaved_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string plaats = comboBoxSaved.Text;
+            plaats = plaats.Remove(plaats.Length - 9);
+            List<Weer> weerLijst = JsonConvert.DeserializeObject<List<Weer>>(File.ReadAllText(PATH_SAVED));
+
+            foreach (Weer w in weerLijst)
+            {
+                if(w.plaatsNaam == plaats)
+                {
+                    fillLabels(w);
+                    metroLabelHetWeerVan.Text = $"Het weer van {plaats}";
+                    //metroLabelDatum.Text = weer.datum.ToString("dd MMMM yyyy");
+                }
+            }
         }
     }   
 }
