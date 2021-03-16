@@ -252,7 +252,7 @@ namespace WeerLive
                 {
                     fillLabels(w);
                     metroLabelHetWeerVan.Text = $"Het weer van {plaats}";
-                    //metroLabelDatum.Text = weer.datum.ToString("dd MMMM yyyy");
+                    metroLabelDatum.Text = w.datum.ToString("dd MMMM yyyy");
                 }
             }
         }
