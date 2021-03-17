@@ -79,6 +79,8 @@ namespace WeerLive
             MetroTabControl tab = ((MetroTabControl)sender);
             int i = tab.SelectedIndex;
             metroTabControl1.TabPages[i].Controls.Add(comboBoxLocation1);
+            metroTabControl1.TabPages[i].Controls.Add(comboBoxSaved);
+            metroTabControl1.TabPages[i].Controls.Add(metroButtonExport);
 
             //if (metroTabControl1.SelectedTab.Name == "metroTabPageAlgemeen")
             //{
@@ -143,7 +145,7 @@ namespace WeerLive
             pictureBoxD1weer.Image = Image.FromFile(getCorrectImage(p.d1weer));
             pictureBoxD2weer.Image = Image.FromFile(getCorrectImage(p.d2weer));
 
-
+            metroLabelDatum.Text = p.datum.ToString("dd MMMM yyy");
         }
 
         // Gemiddelde temperatuur berekenen
@@ -243,15 +245,16 @@ namespace WeerLive
         private void comboBoxSaved_SelectedIndexChanged(object sender, EventArgs e)
         {
             string plaats = comboBoxSaved.Text;
-            plaats = plaats.Remove(plaats.Length - 9);
+            //plaats = plaats.Remove(plaats.Length - 9);
             List<Weer> weerLijst = JsonConvert.DeserializeObject<List<Weer>>(File.ReadAllText(PATH_SAVED));
 
             foreach (Weer w in weerLijst)
             {
-                if(w.plaatsNaam == plaats)
+                string saved = $"{w.plaatsNaam} {w.datum.Date.ToString("dd-MM-yy")}";
+                if(saved == plaats)
                 {
                     fillLabels(w);
-                    metroLabelHetWeerVan.Text = $"Het weer van {plaats}";
+                    metroLabelHetWeerVan.Text = $"Het weer van {plaats.Remove(plaats.Length - 9)}";
                     metroLabelDatum.Text = w.datum.ToString("dd MMMM yyyy");
                 }
             }
